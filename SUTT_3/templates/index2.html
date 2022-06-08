@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    {% if inventory %}
+    <table>
+      <thead>
+        <th> Item_name </th>
+        <th> Quantity</th>
+      </thead>
+
+      {% for i in inventory %}
+      <tr>
+
+        <td><a href="{{ i.id }}">{{i.Item_name}}</td>
+        <td>{{i.Quantity}}</td>
+        <button type="button" class="btn btn-primary">Issue</button>
+      </tr>
+      {% endfor %}
+      {% endif %}
+
+
+    </table>
+    <a href="{% url 'logout' %}"><button type="button" class="btn btn-primary">Sign Out</button>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TableView - Startup</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <a class="btn btn-primary" href="http://127.0.0.1:8000/additems/" role="button">Add Items</a>
+  <a class="btn btn-primary" href="http://127.0.0.1:8000/addcategory/" role="button">Add Category</a>
+    <a class="btn btn-primary" href="http://127.0.0.1:8000/upload/" role="button">Upload Excel</a>
+    <a class="btn btn-primary" href="http://127.0.0.1:8000/export/" role="button">Download Excel</a>
+    <a class="btn btn-primary" href="http://127.0.0.1:8000/accounts/google/login/" role="button">Sign Out</a>
+
+
+                      {% if messages %}
+                      <ul class="messages">
+                          {% for message in messages %}
+                          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                          {% endfor %}
+                      </ul>
+                      {% endif %}
+
+<div class="container">
+  <h2 class="text-center"><u>Inventory</u></h2><br>
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>Item Name</th>
+        <th>Quantity</th>
+        <th>Category</th>
+
+      </tr>
+    </thead>
+    <tbody>
+    <!-- jinja2 Technique -->
+
+    {% for i in inventory_list %}
+      <tr>
+        <td>{{i.Item_name}}</td>
+        <td>{{i.Quantity}}</td>
+        <td>{{i.category}}</td>
+
+
+        <td><a href="{{i.id}}/edit"<button value="{{i.id}}" name="item_id" type="button" class="btn btn-success">Edit</button></td>
+
+
+
+      </tr>
+    {% endfor %}
+
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
